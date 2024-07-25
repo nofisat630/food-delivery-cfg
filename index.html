@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TechTummies</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 5px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #FAB289;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #FF5C28;
+  color: black;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+.row2 {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    height: 50vh;          /* Full height of the viewport */
+ }
+
+.h2title {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    height: 10vh;          /* Full height of the viewport */
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>TechTummies</h1>
+</div>
+
+<div class="topnav">
+  <a href="index.html">Home</a>
+  <a href="food-selection.html">Grocery</a>
+  <a href="basket.html">Basket</a>
+</div>
+
+<div class="row2">
+    <div class="column2">
+        <img src='fruits.jpg'>
+    </div>
+</div>
+
+<div>
+    <div class = 'h2title'>
+        <h2> Groceries on offer</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column">
+      <h2></h2>
+      <img src='blueberry.jpeg'>
+      <div>
+        <h2> 200g Blueberries £2.50</h2>
+    </div>
+      <img src='apple_1.jpg' width="150" height="150">
+      <div>
+        <h2> 4 Apples £3.50</h2>
+    </div>
+    </div>
+    
+    <div class="column">
+      <h2></h2>
+      <img src='bagel.jpg'width="200" height="150">
+      <div>
+        <h2> 2 packs for £3.60</h2>
+    </div>
+      <img src='muffin.jpeg'>
+      <div>
+        <h2> Muffins 3 for £1.50</h2>
+    </div>
+    </div>
+    
+    <div class="column">
+      <h2></h2>
+      <img src='lemonade.jpeg'>
+      <div>
+        <h2> 2 Fizzy drinks £1.20</h2>
+    </div>
+      <img src='milkshake.jpeg'>
+      <div>
+    </div>
+        <h2> 3 Yazoo £2.40</h2>
+    </div>
+  </div>
+  <div class="footer">
+    <p>Footer</p>
+  </div>
+  
+
+</body>
+</html>

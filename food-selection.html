@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TechTummies</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 5px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #FAB289;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #FF5C28;
+  color: black;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+.row2 {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    height: 50vh;          /* Full height of the viewport */
+ }
+
+.h2title {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    height: 10vh;          /* Full height of the viewport */
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>TechTummies</h1>
+</div>
+
+<div class="topnav">
+  <a href="index.html">Home</a>
+  <a href="food-selection.html">Grocery</a>
+  <a href="basket.html">Basket</a>
+</div>
+
+<div class="row">
+    <div class="column">
+      <h2></h2>
+      <img src='kebab.jpg'width="150" height="150">
+      <div>
+        <p>Kebab £2.50</p>
+        <button class="add-to-cart" data-name="Kebab" data-cost="2.50">Add to Cart</button>
+    </div>
+      <img src='noodles.webp' width="150" height="150">
+      <div>
+        <p>Stir fried noodles £4.50</p>
+        <button class="add-to-cart" data-name="Stir fried noodles" data-cost="4.50">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="column">
+      <h2></h2>
+      <img src='chips.jpg'width="150" height="150">
+      <div>
+        <p>Cheesy Chips £3.60</p>
+        <button class="add-to-cart" data-name="Cheesy Chips" data-cost="3.60">Add to Cart</button>
+    </div>
+      <img src='waffles.webp' width="150" height="150">
+      <div>
+        <p>Waffles £1.50</p>
+        <button class="add-to-cart" data-name="Waffles" data-cost="1.50">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="column">
+      <h2></h2>
+      <img src='ice.webp' width="150" height="150">
+      <div>
+        <p>Sundae £1.20</p>
+        <button class="add-to-cart" data-name="Sundae" data-cost="1.20">Add to Cart</button>
+    </div>
+      <img src='pasta.jpg' width="150" height="150">
+      <div>
+        <p>Pasta bake £7.40</p>
+        <button class="add-to-cart" data-name="Pasta bake" data-cost="7.40">Add to Cart</button>
+    </div>
+    </div>
+    <div class="column">
+        <h2></h2>
+        <img src='kids meal.jpeg'>
+        <div>
+          <p>Kids meal £5.20</p>
+          <button class="add-to-cart" data-name="Kids meal" data-cost="5.20">Add to Cart</button>
+      </div>
+        <img src='wrap.jpeg'>
+        <div>
+          <p>Chicken wrap £4.40</p>
+          <button class="add-to-cart" data-name="Chicken wrap" data-cost="4.40">Add to Cart</button>
+      </div>
+    </div>
+    <div class="column">
+        <h2></h2>
+        <img src='rice.jpeg'>
+        <div>
+          <p>Chinese fried rice £6.20</p>
+          <button class="add-to-cart" data-name="Chinese fried rice" data-cost="6.20">Add to Cart</button>
+      </div>
+        <img src='wings.jpeg'>
+        <div>
+          <p>Golden chicken wings £2.40</p>
+          <button class="add-to-cart" data-name="Golden chicken wings" data-cost="2.40">Add to Cart</button>
+      </div>
+    </div>
+    <div class="column">
+        <h2></h2>
+        <img src='Pizza.webp'width="170" height="170">
+        <div>
+          <p>Margherita Pizza £5.00</p>
+          <button class="add-to-cart" data-name="Margherita Pizza" data-cost="5.00">Add to Cart</button>
+      </div>
+        <img src='burger.jpeg'>
+        <div>
+          <p>Meal deal £4.60</p>
+          <button class="add-to-cart" data-name="Meal deal" data-cost="4.60">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Footer</p>
+  </div>
+
+  <script>
+    let totalCost = 0;
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const cost = parseFloat(button.getAttribute('data-cost'));
+        totalCost += cost;
+        alert(`Item added to cart. Total cost: £${totalCost.toFixed(2)}`);
+      });
+    });
+  </script>
+</body>
+</html>

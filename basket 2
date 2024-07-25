@@ -1,0 +1,74 @@
+// Create an empty array to store items added to the cart
+const cart = [];
+// Wait until the entire page is loaded before running the script
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("The page is loaded. Setting up event listeners for the cart buttons.");
+    // Find all buttons with the class "add-to-cart" and add a click event listener to each
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            // Get the item name and cost from the button's data attributes
+            const itemName = button.getAttribute("data-name");
+            const itemCost = parseFloat(button.getAttribute("data-cost"));
+            console.log(`Add to Cart button clicked for: ${itemName} - Cost: £${itemCost.toFixed(2)}`);
+            // Check if the item already exists in the cart
+            const existingItem = cart.find(item => item.name === itemName);
+            if (existingItem) {
+                // If the item exists, increase its quantity
+                existingItem.quantity += 1;
+                console.log(`Existing item found: ${itemName}. Quantity is now ${existingItem.quantity}.`);
+            } else {
+                // If the item is new, add it to the cart with a quantity of 1
+                cart.push({ name: itemName, quantity: 1, cost: itemCost });
+                console.log(`New item added to cart: ${itemName}. Quantity set to 1.`);
+            }
+            // Log the current cart to the console for debugging
+            console.log("Current Cart:", cart);
+            // Update the cart display on the page
+            updateCartDisplay();
+        });
+    });
+    // Function to update the display of the cart in the right column
+    function updateCartDisplay() {
+        const cartElement = document.querySelector(".right");
+        // Reset the cart display
+        cartElement.innerHTML = `
+            <h3>Your order and details</h3>
+            <p>Confirm your address details:</p>
+            <p>123 Address Drive</p>
+            <p>QW12 3ER</p>
+            <p>London</p>
+            <h4>Cart Items:</h4>
+        `;
+        // Loop through each item in the cart and display it
+        cart.forEach((item, index) => {
+            const cartItem = document.createElement("div");
+            cartItem.className = "cart-item";
+            // Display the item name, quantity, and cost
+            const itemInfo = document.createElement("span");
+            itemInfo.textContent = `${item.name} - Quantity: ${item.quantity} - Cost per item: £${item.cost.toFixed(2)}`;
+            // Create a remove button for each item
+            const removeButton = document.createElement("button");
+            removeButton.className = "remove-btn";
+            removeButton.textContent = "Remove";
+            // When the remove button is clicked, remove the item from the cart
+            removeButton.addEventListener("click", function() {
+                console.log(`Removing item: ${item.name} from the cart.`);
+                removeFromCart(index);
+            });
+            // Add item info and remove button to the cart item container
+            cartItem.appendChild(itemInfo);
+            cartItem.appendChild(removeButton);
+            // Add the cart item to the cart element in the DOM
+            cartElement.appendChild(cartItem);
+        });
+        console.log("Cart display updated in the DOM.");
+    }
+    // Function to remove an item from the cart by its index
+    function removeFromCart(index) {
+        const removedItem = cart.splice(index, 1)[0]; // Remove item and capture it for logging
+        console.log(`Removed item from cart: ${removedItem.name}`);
+        // Refresh the cart display after removing the item
+        updateCartDisplay();
+    }
+});
