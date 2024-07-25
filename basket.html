@@ -106,6 +106,17 @@ body {
   margin-top: 20px;
 }
 
+.cart-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.cart-item img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
 </style>
 </head>
 <body>
@@ -120,8 +131,8 @@ body {
   <a href="basket.html">Basket</a>
 </div>
     <div>
-        <div class = 'h2title'>
-            <h2> Your basket</h2>
+        <div class='h2title'>
+            <h2>Your basket</h2>
         </div>
     </div>
 
@@ -132,7 +143,7 @@ body {
           <div class="item-details">
             <p>Beef Burger with something</p>
             <p>£4.60</p>
-            <button class="add-to-cart" data-name="Beef Burger" data-cost="4.60">Add to Cart</button>
+            <button class="add-to-cart" data-name="Beef Burger" data-cost="4.60" data-image="burger.jpeg">Add to Cart</button>
           </div>
         </div>
         <div class="row2">
@@ -140,7 +151,7 @@ body {
           <div class="item-details">
             <p>Waffles</p>
             <p>£1.50</p>
-            <button class="add-to-cart" data-name="Waffles" data-cost="1.50">Add to Cart</button>
+            <button class="add-to-cart" data-name="Waffles" data-cost="1.50" data-image="waffles.webp">Add to Cart</button>
           </div>
         </div>
         <div class="row2">
@@ -148,27 +159,45 @@ body {
           <div class="item-details">
             <p>Cheesy chips</p>
             <p>£3.60</p>
-            <button class="add-to-cart" data-name="Cheesy Chips" data-cost="3.60">Add to Cart</button>
+            <button class="add-to-cart" data-name="Cheesy Chips" data-cost="3.60" data-image="chips.jpg">Add to Cart</button>
           </div>
         </div>
       </div>
     <div class="right">
         <h3>Your order and details</h3>
+        <div id="cart-items"></div>
         <p class="total">Total: £<span id="total-cost">0.00</span></p>
     </div>
 
   <script>
     let totalCost = 0;
+    const cartItemsContainer = document.getElementById('cart-items');
     
     document.querySelectorAll('.add-to-cart').forEach(button => {
       button.addEventListener('click', () => {
         const cost = parseFloat(button.getAttribute('data-cost'));
+        const name = button.getAttribute('data-name');
+        const image = button.getAttribute('data-image');
+        
         totalCost += cost;
         document.getElementById('total-cost').innerText = totalCost.toFixed(2);
-        // Now you have a variable `totalCost` which holds the total cost and can be used elsewhere
-        console.log('Total Cost:', totalCost); // You can use this variable for further processing
+        
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        
+        const itemImage = document.createElement('img');
+        itemImage.src = image;
+        itemImage.alt = name;
+        
+        const itemName = document.createElement('span');
+        itemName.innerText = `${name} - £${cost.toFixed(2)}`;
+        
+        cartItem.appendChild(itemImage);
+        cartItem.appendChild(itemName);
+        
+        cartItemsContainer.appendChild(cartItem);
       });
     });
-    </script>
+  </script>
 </body>
 </html>
